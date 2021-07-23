@@ -20,11 +20,14 @@ router.get('/', (req, res) => {
 // Details page needs to show ALL details including ALL genres (title, poster, description, genres,)
 router.get('/:id', (req, res) => {
   const detailsId = req.params.id;
+
+  // This query returns all details to be displayed on details page.
+  // Returns multiple genres for some movies.
   const detailsQuery = 
-  `SELECT title, name, description, poster, genre_id, genres.name
-  FROM movies_genres 
-  JOIN movies on movies.id = movies_genres.movie_id
-  JOIN genres ON genres.id = movies_genres.movie_id
+  `SELECT title, description, poster, genres.name
+  FROM movies
+  JOIN movies_genres on movies_genres.movie_id = movies.id
+  JOIN genres ON genres.id = movies_genres.genre_id;
   WHERE movies.id = $1;`;
   pool.query(detailsQuery, [detailsId])
     .then( result => {
