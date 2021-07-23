@@ -4,7 +4,6 @@ const pool = require('../modules/pool')
 
 // GET all movies from database - provided by Prime
 router.get('/', (req, res) => {
-
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
@@ -18,9 +17,15 @@ router.get('/', (req, res) => {
 });
 
 // GET movies by ID (for clicked on individual movie posters and routing to details component)
+// Details page needs to show ALL details including ALL genres (title, poster, description, genres,)
 router.get('/:id', (req, res) => {
   const detailsId = req.params.id;
-  const detailsQuery = `SELECT * FROM movies WHERE id=1`;
+  const detailsQuery = 
+  `SELECT title, name, description, poster, genre_id, genres.name
+  FROM movies_genres 
+  JOIN movies on movies.id = movies_genres.movie_id
+  JOIN genres ON genres.id = movies_genres.movie_id
+  WHERE movies.id = $1;`;
   pool.query(detailsQuery, [detailsId])
     .then( result => {
       console.log(`Details GET working`);

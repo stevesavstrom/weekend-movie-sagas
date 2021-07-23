@@ -41,7 +41,7 @@ This view is completed already! It displays all of the movies in the movie datab
 
 - [x] TODO: When a movie poster is clicked, a user should be brought to the `/details` view for that movie.
 
-- [ ] TODO: Have a way to get to the Add Movie Page
+- [ ] TODO: Have a way to get to the Add Movie Page - Nav? Link?
 
 ### Details Page
 - [ ] This should show all details **including ALL genres** for the selected movie. You will need to store this data in redux! Hint : You can make a GET request for a specific movie. Remember `req.params` and `:id`?
