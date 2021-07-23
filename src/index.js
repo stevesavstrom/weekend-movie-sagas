@@ -51,12 +51,15 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store clicked movie
+
+// Used to store clicked movie genre
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
-        genres,
-        // details
+        genres
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

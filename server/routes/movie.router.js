@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// GET all movies from database - provided by Prime
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -16,8 +17,7 @@ router.get('/', (req, res) => {
 
 });
 
-// Need to write a GET for details component. GET movies by ID. Remember `req.params` and `:id`? No, not really. Where can I find an example of this?
-
+// GET movies by ID (for clicked on individual movie posters and routing to details component)
 router.get('/:id', (req, res) => {
   const detailsId = req.params.id;
   const detailsQuery = `SELECT * FROM movies WHERE id=1`;
@@ -32,6 +32,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
+// POST a new movie - provided by Prime
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
