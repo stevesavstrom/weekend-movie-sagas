@@ -25,8 +25,7 @@ function* fetchAllMovies() {
 
     } catch {
         console.log('get all error');
-    }
-        
+    }       
 }
 
 // Create sagaMiddleware
@@ -57,6 +56,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        // details
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

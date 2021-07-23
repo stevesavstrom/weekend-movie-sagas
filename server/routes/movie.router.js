@@ -16,6 +16,22 @@ router.get('/', (req, res) => {
 
 });
 
+// Need to write a GET for details component. GET movies by ID. Remember `req.params` and `:id`? No, not really. Where can I find an example of this?
+
+router.get('/:id', (req, res) => {
+  const detailsId = req.params.id;
+  const detailsQuery = `SELECT * FROM movies WHERE id=1`;
+  pool.query(detailsQuery, [detailsId])
+    .then( result => {
+      console.log(`Details GET working`);
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('ERROR getting movie details', error);
+      res.sendStatus(500)
+    })
+});
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
