@@ -40,6 +40,9 @@ const MovieForm = () => {
 
 		<input type='text' placeholder='Poster URL' value={newMovie.genre} onChange={handleGenreChange} />
 
+		<button>Save</button>
+		<button>Cancel</button>
+
 	</form>
 
 	)
