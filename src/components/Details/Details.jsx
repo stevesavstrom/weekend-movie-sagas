@@ -9,18 +9,9 @@ function Details() {
 
   const details = useSelector(store => store.details);
 
-//   const test =() => {
-// 	  console.log(details);
-//   }
-
-useEffect(() => {
-console.log(`looking at details`);
-}, []);
-
   return (
     <div>
       <h3>{details && details[0].title}</h3>
-	  {/* <button onClick={test}>test</button> */}
 	  <img src= {details && details[0].poster}></img>
 	  <p>{details && details[0].description}</p>
 

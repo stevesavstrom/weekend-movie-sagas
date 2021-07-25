@@ -2,11 +2,9 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  padding: 30px;
   color: white;
 }
 
@@ -16,6 +14,26 @@
 
 .App-intro {
   font-size: large;
+}
+
+.navigation{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.addMovie {
+  margin: 5px;
+  width: 5rem;
+  height: 2rem;
+}
+
+.movieList {
+  margin: 5px;
+  width: 5rem;
+  height: 2rem;
 }
 
 @keyframes App-logo-spin {
