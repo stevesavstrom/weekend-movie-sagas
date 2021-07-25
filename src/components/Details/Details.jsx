@@ -1,59 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-  // Material-UI
-  import { makeStyles } from "@material-ui/core/styles";
-  import Button from "@material-ui/core/Button";
-  import Box from "@material-ui/core/Box";
-
-  // Material-UI Styles
-const useStyles = makeStyles({
-  box: {
-    margin: "30px",
-  },
-});
-
+import "./Details.css";
 
 function Details() {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
-
   const details = useSelector((store) => store.details);
-
-  const classes = useStyles();
-
   const history = useHistory();
-
-
   const handleBack = (event) => {
     event.preventDefault();
     history.push(`/`);
   };
 
-
   return (
-    <div>
+    <div className="mainDetails">
       <h3>{details && details[0].title}</h3>
-      <img src={details && details[0].poster}></img>
-      <p>{details && details[0].description}</p>
+      <div className="container">
+        <img className="poster" src={details && details[0].poster}></img>
 
-      {details &&
-        details.map((detail) => {
-          return <p key={detail.id}>{detail.name}</p>;
-        })}
+        <p className="description">{details && details[0].description}</p>
+      </div>
 
-      <Box className={classes.box}>
-        <Button
-          onClick={handleBack}
-          className={classes.button}
-          variant="outlined"
-          color="primary"
-          type="submit"
-        >
-          Movie List
-        </Button>
-      </Box>
+      <p className="genres">
+        {details &&
+          details.map((detail) => {
+            return (
+              <p className="genres" key={detail.id}>
+                {detail.name}
+              </p>
+            );
+          })}{" "}
+      </p>
+
+      <button className="details" onClick={handleBack}>
+        Back
+      </button>
     </div>
   );
 }
