@@ -44,8 +44,6 @@ const MovieForm = () => {
     console.log("in use effect");
   }, []);
 
-  console.log(`what are the genres?`, genres);
-
   // GET request on page load to see categories table from database
   const getGenres = () => {
     console.log("getGenres");
@@ -73,6 +71,7 @@ const MovieForm = () => {
     console.log(newMovie);
     dispatch({ type: "POST_MOVIE", payload: newMovie });
     setNewMovie({ title: "", poster: "", description: "", genre_id: "" });
+	history.push(`/`);
   };
 
   const handleCancel = (event) => {
@@ -113,7 +112,7 @@ const MovieForm = () => {
 
       <Select
         className={classes.select}
-        value={newMovie.genre_id}
+        value={newMovie.genre}
         onChange={handleGenreChange}
         variant="outlined"
       >

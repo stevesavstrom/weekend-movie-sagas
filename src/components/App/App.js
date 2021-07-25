@@ -14,13 +14,13 @@ function App() {
 
         <nav className="navigation">
           <div className="movieList">
-            <Link to="/" class="link">
+            <Link to="/" className="link">
               Movie List
             </Link>
           </div>
 
           <div className="addMovie">
-            <Link to="/movieform" class="link">
+            <Link to="/movieform" className="link">
               Add Movie
             </Link>
           </div>
