@@ -33,7 +33,7 @@ function* fetchAllMovies() {
 function* fetchAllGenres (action) {
     // get all genres from the DB
     try {
-        const genres = yield axios.get(`/api/genre/${action.payload}`);
+        const genres = yield axios.get(`/api/genre/`);
         console.log('get all genres:', genres.data);
         yield put({type: 'SET_GENRES', payload: genres.data});
     } catch {

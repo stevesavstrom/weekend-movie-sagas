@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Material-UI
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 // Material-UI Styles
 const useStyles = makeStyles({
@@ -16,20 +18,39 @@ const useStyles = makeStyles({
     margin: "3px",
   },
   text: {
-    width: "20%",
+    width: "50%",
     margin: "3px",
   },
   box: {
     margin: "30px",
+  },
+  select: {
+    width: "50%",
   },
 });
 
 const MovieForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const genres = useSelector((store) => store.genres);
+
   const classes = useStyles();
 
   let [newMovie, setNewMovie] = useState([]);
+
+  useEffect(() => {
+    getGenres();
+    console.log("in use effect");
+  }, []);
+
+  console.log(`what are the genres?`, genres);
+
+  // GET request on page load to see categories table from database
+  const getGenres = () => {
+    console.log("getGenres");
+    dispatch({ type: "FETCH_GENRES" });
+  };
 
   const handleTitleChange = (event) => {
     setNewMovie({ ...newMovie, title: event.target.value });
@@ -60,7 +81,7 @@ const MovieForm = () => {
   };
 
   return (
-    <form onSubmit={addNewMovie}>
+    <form className={classes.form} onSubmit={addNewMovie}>
       <h2>Add a New Movie</h2>
 
       <TextField
@@ -90,17 +111,20 @@ const MovieForm = () => {
         onChange={handleDescriptionChange}
       />
 
-      <TextField
-        className={classes.text}
-        type="text"
-        variant="outlined"
-        placeholder="Genre"
+      <Select
+        className={classes.select}
         value={newMovie.genre_id}
         onChange={handleGenreChange}
-      />
-
-      {/* <button type="submit">Save</button> */}
-      {/* <button onClick={handleCancel}>Cancel</button> */}
+        variant="outlined"
+      >
+        {genres.map((genre) => {
+          return (
+            <MenuItem key={genre.id} value={genre.id}>
+              {genre.name}
+            </MenuItem>
+          );
+        })}
+      </Select>
 
       <Box className={classes.box}>
         <Button
@@ -114,7 +138,7 @@ const MovieForm = () => {
         </Button>
 
         <Button
-		onClick={handleCancel}
+          onClick={handleCancel}
           className={classes.button}
           variant="outlined"
           color="primary"
@@ -128,3 +152,21 @@ const MovieForm = () => {
 };
 
 export default MovieForm;
+
+{
+  /* <em>None</em>
+        </MenuItem>
+        <MenuItem value={1}>Adventure</MenuItem>
+        <MenuItem value={2}>Animation</MenuItem>
+        <MenuItem value={3}>Biographical</MenuItem>
+		<MenuItem value={4}>Drama</MenuItem>
+		<MenuItem value={5}>Drama</MenuItem>
+		<MenuItem value={6}>Drama</MenuItem>
+		<MenuItem value={7}>Drama</MenuItem>
+		<MenuItem value={8}>Drama</MenuItem>
+		<MenuItem value={9}>Drama</MenuItem>
+		<MenuItem value={10}>Drama</MenuItem>
+		<MenuItem value={11}>Drama</MenuItem>
+		<MenuItem value={12}>Drama</MenuItem>
+		<MenuItem value={13}>Drama</MenuItem> */
+}
