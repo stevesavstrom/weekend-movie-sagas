@@ -25,16 +25,15 @@ function* fetchAllMovies() {
         const movies = yield axios.get('/api/movie');
         console.log('get all movies:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
-
     } catch {
         console.log('get all movies error');
     }       
 }
 
-function* fetchAllGenres () {
+function* fetchAllGenres (action) {
     // get all genres from the DB
     try {
-        const genres = yield axios.get('/api/genre');
+        const genres = yield axios.get(`/api/genre/${action.payload}`);
         console.log('get all genres:', genres.data);
         yield put({type: 'SET_GENRES', payload: genres.data});
     } catch {
@@ -45,10 +44,9 @@ function* fetchAllGenres () {
 function* fetchDetails(action) {
     // get details from the DB
     try {
-        const details = yield axios.get(`/api/movie/:id`);
-        console.log('details:', action.payload);
-        yield put({ type: 'SET_DETAILS', payload: details.data });
-
+        const details = yield axios.get(`/api/movie/${action.payload}`);
+        console.log('details:', details.data);
+        yield put({ type: 'SET_DETAILS', payload: details.data  });
     } catch {
         console.log('get details error');
     }       
@@ -87,7 +85,7 @@ const genres = (state = [], action) => {
 }
 
 // Used to store the movie details
-const details = (state = [], action) => {
+const details = (state = 0, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;

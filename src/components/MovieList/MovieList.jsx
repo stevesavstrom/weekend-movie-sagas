@@ -14,6 +14,7 @@ function MovieList() {
     }, []);
 
     const handleDetails =  (details) => {
+        dispatch({ type: 'FETCH_DETAILS', payload: details.id })
         history.push(`details/${details.id}`)
     }
 
@@ -25,7 +26,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick={event => handleDetails(movie)} src={movie.poster} alt={movie.title}/>
+                            <img onClick={() => handleDetails(movie)} src={movie.poster} alt={movie.title}/>
                         </div>
                     );
                 })}

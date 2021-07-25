@@ -18,6 +18,10 @@ const MovieForm = () => {
         setNewMovie({...newMovie, description: event.target.value})
     }
 
+	const handleGenreChange = (event) => {
+        setNewMovie({...newMovie, genre_id: event.target.value})
+    }
+
 	// const handleGenreChange = (event) => {
     //     setNewMovie({...newMovie, genre: event.target.value})
     // }
@@ -26,7 +30,7 @@ const MovieForm = () => {
 		event.preventDefault();
         console.log(newMovie);
 		dispatch({ type: 'POST_MOVIE', payload: newMovie});
-		setNewMovie({title: '', poster: '', description: '', genre: ''})
+		setNewMovie({title: '', poster: '', description: '', genre_id: ''})
 	}
 
 	return (
@@ -39,7 +43,7 @@ const MovieForm = () => {
 
 		<input type='text' placeholder='Description' value={newMovie.description} onChange={handleDescriptionChange} />
 
-		{/* <input type='text' placeholder='Poster URL' value={newMovie.genre} onChange={handleGenreChange} /> */}
+		<input type='text' placeholder='Genre' value={newMovie.genre_id} onChange={handleGenreChange} />
 
 		<button type='submit'>Save</button>
 		<button>Cancel</button>
