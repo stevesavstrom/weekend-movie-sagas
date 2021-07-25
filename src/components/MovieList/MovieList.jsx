@@ -36,5 +36,3 @@ function MovieList() {
 }
 
 export default MovieList;
-
-{/* <img onClick={event => handleDetails(movie)} src={movie.poster} alt={movie.title}/> */}
