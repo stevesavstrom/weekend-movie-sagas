@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // GET movies by ID (for clicked on individual movie posters and routing to details component)
-// Details page needs to show ALL details including ALL genres (title, poster, description, genres,)
+// Details page needs to show ALL details including ALL genres (title, poster, description, genres)
 router.get('/:id', (req, res) => {
   const detailsId = req.params.id;
 console.log('In GET details');
@@ -41,7 +41,7 @@ console.log(`details id`, detailsId);
     })
 });
 
-// POST a new movie - provided by Prime
+// POST a new movie - used for adding a new movie to database.
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie

@@ -8,10 +8,12 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {/* Header */}
         <header className="App-header">
           <img className="logo" src="images/logo.png"></img>
         </header>
 
+        {/* Navigation */}
         <nav className="navigation">
           <div className="movieList">
             <Link to="/" className="link">

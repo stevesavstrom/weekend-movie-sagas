@@ -13,14 +13,14 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('FETCH_GENRES', fetchAllGenres);
-    yield takeEvery('FETCH_DETAILS', fetchDetails);
-    yield takeEvery('POST_MOVIE', postMovie);
+    yield takeEvery('FETCH_MOVIES', fetchAllMovies); // GET all movies from DB
+    yield takeEvery('FETCH_GENRES', fetchAllGenres); // GET all genres from DB
+    yield takeEvery('FETCH_DETAILS', fetchDetails); // GET details from DB (Join)
+    yield takeEvery('POST_MOVIE', postMovie); // POST movie to DB
 }
 
 function* fetchAllMovies() {
-    // get all movies from the DB
+    // GET all movies from DB (movie.router.js)
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all movies:', movies.data);
@@ -31,7 +31,7 @@ function* fetchAllMovies() {
 }
 
 function* fetchAllGenres (action) {
-    // get all genres from the DB
+    // GET all genres from DB (genre.router.js)
     try {
         const genres = yield axios.get(`/api/genre/`);
         console.log('get all genres:', genres.data);
@@ -42,7 +42,7 @@ function* fetchAllGenres (action) {
 }
 
 function* fetchDetails(action) {
-    // get details from the DB
+    // GET details from DB (SQL Join on movie.router.js)
     try {
         const details = yield axios.get(`/api/movie/${action.payload}`);
         console.log('details:', details.data);
@@ -53,6 +53,7 @@ function* fetchDetails(action) {
 }
 
 function* postMovie(action) {
+    // POST movie to DB (movie.router.js)
     try {
         yield call(axios.post, '/api/movie', action.payload);
         yield put({type: 'FETCH_MOVIES'});

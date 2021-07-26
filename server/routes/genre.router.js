@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-// GET all movies from database - provided by Prime
+// GET all genres from database
 router.get('/', (req, res) => {
   const query = `SELECT * FROM genres ORDER BY "name" ASC`;
   pool.query(query)
