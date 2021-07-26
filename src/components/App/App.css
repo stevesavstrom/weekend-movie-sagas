@@ -6,8 +6,12 @@
 
 .App-header {
   background-color: #121212;
-  padding: 30px;
+  padding: 10px;
   color: #e8e8e8;
+}
+
+.logo {
+  width: 300px;
 }
 
 .App-title {

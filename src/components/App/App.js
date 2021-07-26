@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Router>
         <header className="App-header">
-          <h1>Movie Manager</h1>
+          <img className="logo" src="images/logo.png"></img>
         </header>
 
         <nav className="navigation">
