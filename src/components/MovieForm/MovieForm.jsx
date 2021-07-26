@@ -130,8 +130,8 @@ const MovieForm = () => {
       </Select>
 
       <Box className={classes.box}>
-        <button type="submit">Save</button>
-        <button type="submit" onClick={handleCancel}>
+        <button className="formButton" type="submit">Save</button>
+        <button className="formButton" type="submit" onClick={handleCancel}>
           Cancel
         </button>
       </Box>
