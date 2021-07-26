@@ -1,6 +1,5 @@
 -- CREATE DATABASE "saga_movies_weekend"
 
-
 CREATE TABLE "movies" (
   "id" SERIAL PRIMARY KEY,
   "title" VARCHAR(120) NOT NULL,
@@ -8,12 +7,10 @@ CREATE TABLE "movies" (
   "description" TEXT NOT NULL
 );
 
-
 CREATE TABLE "genres" (
   "id" SERIAL PRIMARY KEY,
   "name" VARCHAR(80) NOT NULL
 );
-
 
 -- JUNCTION TABLE
 -- Movies can have multiple genres and each genre can be applied to multiple movies
@@ -60,7 +57,6 @@ VALUES
 ('Science Fiction'),  --11
 ('Space-Opera'),      --12
 ('Superhero');        --13
-
 
 -- starter movies and genres data
 INSERT INTO "movies_genres" ("movie_id", "genre_id")

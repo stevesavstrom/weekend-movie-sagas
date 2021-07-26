@@ -1,109 +1,60 @@
-# React-Redux with Redux-Sagas
-This week you have two separate parts to work on:
+# Weekend Challenge: Sagas Movies Application
 
-1. Adding features to an existing Movie App with React-Redux and Redux-Sagas
-2. Practicing SQL
+## Description
+Movie management application that allows users to browse movies, access movie details, and add new movies to the database. This project utilizes React, Redux, Sagas, Node.js, Express, PostgreSQL, Material-UI, HTML, and CSS. This project implements server and client side functionality to create, read, and update items on the server, client and database. This project was created by [Steve Savstrom](https://www.linkedin.com/in/stevesavstrom/) during Week 12 of the [Full Stack Software Engineering program](https://www.primeacademy.io/courses/engineering#curriculum) at [Prime Digital Academy](https://www.primeacademy.io/).
 
-Be sure to do both parts!
+- Users can browse movies and details including title, description, poster, and genres.
+- Users navigate from movie list to details page for each movie.
+- Users can add new movies and details to the database.
 
----
+## Screen Shot
+![Screen Shot](###)
 
-## Add Features to our Movie App
-For this weekend challenge you'll be expanding on a movie management application! We're already able to see movies that exist in our DB. We'll need to be able to see detailed view for each individual movie, including genres associated with that movie. We also need to able to add a new movie's information.
+## Technologies Used and Prerequisites
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Redux-Saga](https://redux-saga.js.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Postico](https://eggerapps.at/postico/)
+- [Material-UI](https://material-ui.com/)
 
-## Database Setup
+## Installation
+1. Create a SQL database named `saga_movies_weekend` (see `database.sql` for setup instructions.)
+2. Open your text editor and run `npm install` in Terminal.
+3. Run `npm run server` in Terminal.
+4. Run `npm run client` in another Terminal to view React application.
+
+## Usage
+Users can browse movies and details in the library. Users can also add movies and details to the database.
+
+## Project Requirements
 - [x] Create a database named `saga_movies_weekend`
-- [x] Run the queries from `database.sql` on the `saga_movies_weekend` database
-
-## Install Dependencies
+- [x] Run the queries from `database.sql` on the `saga_movies_weekend` database.
 - [x] `npm install`
 - [x] `npm run server`
 - [x] `npm run client`
+- [x] When a movie poster is clicked, a user should be brought to the `/details` view for that movie.
+- [x] Navigation to get to the Add Movie Page 
+- [x] Details page should show all details **including ALL genres** for the selected movie. 
+- [x] Details page should have a `Back to List` button, which should bring the user to the Home/List Page.
+- [x] an input field to add the movie title
+- [x] an input field to add the movie poster image URL.
+- [x] a textarea to add the movie description.
+- [x] a dropdown menu for the genres.
+- [x] `Cancel` button on Add Movie page, which should bring the user to the Home/List Page.
+- [x] `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie).
 
-## Notes
-
-### Relationships
-Genres can be applied to many different movies. Movies can have multiple genres. This is Many-to-Many! Junction Table time!
-
-We've given you the database complete with a junction table and data for `movies_genres`.
- 
-### Movies
-We've added some movie posters in the `public/images` folder, and the database is set up to use them. If you want your own posters, you'll want to add the files there!
-
----
-
-## Feature List
-
-> NOTE: Start by taking inventory of the existing code. Part of the work for setting up sagas has been done for you.
-
-### Home / List Page
-This view is completed already! It displays all of the movies in the movie database. 
-
-- [x] TODO: When a movie poster is clicked, a user should be brought to the `/details` view for that movie.
-
-- [x] TODO: Have a way to get to the Add Movie Page - Nav? Link?
-
-### Details Page
-- [x] This should show all details **including ALL genres** for the selected movie. You will need to store this data in redux! Hint : You can make a GET request for a specific movie. Remember `req.params` and `:id`?
-
-- [ ] TODO: The details page should have a `Back to List` button, which should bring the user to the Home/List Page. Base functionality does not require the movie details to load correctly after refresh of the browser.
-
-### Add Movie Page
-
-This should show:
-
-- [x] an input field (for the movie title)
-- [x] an input field (for the movie poster image URL))
-- [x] a textarea (for the movie description)
-- [x] a dropdown (for the genres)
-
-The Add Movie page should have the buttons:
-
-- [x] `Cancel` button, which should bring the user to the Home/List Page
-- [x] `Save` button, which should save these inputs in the database and bring the user to the Home/List Page (which now has the new movie)
-
-**Base functionality does not require being able to select more than one genre for a new movie**
-
-> Hint: Look at the /api/movie POST route -- it's been made already but is performing 2 queries: one to store the movie information and another to store the genre in the junction table.
-
-> Hint: You'll want to use the genres that are in the db for your dropdown
-
----
-
-### General Considerations
-
-As one of your last projects, it's possible you will be sharing this with employers, so be sure to follow best practices and make it look good!
-
-- [ ] Invest some time in styling it up!
-    - [ ] Research cards for your movie posters on the list page
-    - [ ] Research grids for your movie posters on the Movie List page
-- [ ] Commit your code frequently! You should have at 15+ commits on a project of this size. Use branches to help break down your features.
-- [ ] Comment your code.
-- [ ] Update this README to include a description of the project in your own words.
-
----
-
-## Development Stretch Goals
-
-### Refresh on Details Page
-Allow the app to maintain on refresh our details page.
-Research [React Router URL PARAMS](https://reactrouter.com/web/example/url-params) 
-
-### Edit Page (Stretch)
-Add to the detail page an edit button that brings the user to the edit page.
-
-This new page should show:
-
-- an input field (for changing the movie title), for the selected movie.
-- a textarea (for changing the movie description)
-
-The edit page should have the buttons:
-
-- `Cancel` button, which should bring the user to the Details Page
-- `Save` button, which should update the title and description in the database and bring the user to the Details Page
+## Stretch Goals
+- [ ] Allow the app to maintain on refresh our details page.
+- [ ] Add to the detail page an edit button that brings the user to the edit page.
+- [ ] an input field (for changing the movie title), for the selected movie.
+- [ ] a textarea (for changing the movie description)
+- [ ]`Cancel` button, which should bring the user to the Details Page
+- [ ] `Save` button, which should update the title and description in the database and bring the user to the Details Page
 
 ### Other Ideas
-
 - [ ] Display the current values in the input (title) and textarea (description) on the Edit Page
 - [ ] Display all genres on movie list page. Research [array_agg](https://stackoverflow.com/questions/43458174/how-to-save-and-return-javascript-object-with-subarray-in-normalized-sql) to make this possible.
 - [ ] Allow the user to select many genres as they add
@@ -114,3 +65,20 @@ The edit page should have the buttons:
 - [ ] Allow the user to remove a genre from a movie.
 - [ ] Only display the top 10 movies, and allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).
 - [ ] Create an `Admin` page. Add a link from the `Home` page to the `Admin` page. The page should initially display a login form (an input for username and an input for password). When the user enters the correct username (`camera`) and password (`action`), the page should display a form to add genres to the database, and a list of all of the genres with an `x` to remove them from the database. Note: This isn't actually secure, but it's pretty fun, and really good practice.
+
+### Considerations
+- [ ] Invest some time in styling it up!
+    - [ ] Research cards for your movie posters on the list page
+    - [ ] Research grids for your movie posters on the Movie List page
+- [ ] Commit your code frequently! You should have at 15+ commits on a project of this size. Use branches to help break down your features.
+- [ ] Comment your code.
+- [ ] Update this README to include a description of the project in your own words.
+
+
+
+
+
+
+
+
+

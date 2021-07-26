@@ -71,7 +71,7 @@ const MovieForm = () => {
     console.log(newMovie);
     dispatch({ type: "POST_MOVIE", payload: newMovie });
     setNewMovie({ title: "", poster: "", description: "", genre_id: "" });
-	history.push(`/`);
+    history.push(`/`);
   };
 
   const handleCancel = (event) => {
@@ -126,46 +126,14 @@ const MovieForm = () => {
       </Select>
 
       <Box className={classes.box}>
-        <Button
-          type="submit"
-          className={classes.button}
-          variant="outlined"
-          color="primary"
-          type="submit"
-        >
-          Save
-        </Button>
-
-        <Button
-          onClick={handleCancel}
-          className={classes.button}
-          variant="outlined"
-          color="primary"
-          type="submit"
-        >
+        <button type="submit">Save</button>
+        <button type="submit" onClick={handleCancel}>
           Cancel
-        </Button>
+        </button>
       </Box>
+	  
     </form>
   );
 };
 
 export default MovieForm;
-
-{
-  /* <em>None</em>
-        </MenuItem>
-        <MenuItem value={1}>Adventure</MenuItem>
-        <MenuItem value={2}>Animation</MenuItem>
-        <MenuItem value={3}>Biographical</MenuItem>
-		<MenuItem value={4}>Drama</MenuItem>
-		<MenuItem value={5}>Drama</MenuItem>
-		<MenuItem value={6}>Drama</MenuItem>
-		<MenuItem value={7}>Drama</MenuItem>
-		<MenuItem value={8}>Drama</MenuItem>
-		<MenuItem value={9}>Drama</MenuItem>
-		<MenuItem value={10}>Drama</MenuItem>
-		<MenuItem value={11}>Drama</MenuItem>
-		<MenuItem value={12}>Drama</MenuItem>
-		<MenuItem value={13}>Drama</MenuItem> */
-}
