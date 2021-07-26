@@ -8,7 +8,7 @@ Movie management application that allows users to browse movies, access movie de
 - Users can add new movies and details to the database.
 
 ## Screen Shot
-![Screen Shot](public/images/screenshot.gif)
+![Screen Shot](public/images/screenshot2.gif)
 
 ## Technologies Used and Prerequisites
 - [React](https://reactjs.org/)
