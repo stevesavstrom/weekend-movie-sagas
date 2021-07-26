@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import "./MovieForm.css";
 
 // Material-UI
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
@@ -18,14 +19,14 @@ const useStyles = makeStyles({
     margin: "3px",
   },
   text: {
-    width: "50%",
+    width: "90%",
     margin: "3px",
   },
   box: {
     margin: "30px",
   },
   select: {
-    width: "50%",
+    width: "90%",
   },
 });
 
@@ -81,7 +82,10 @@ const MovieForm = () => {
 
   return (
     <form className={classes.form} onSubmit={addNewMovie}>
+      <div className="section"></div>
+      <div className="card">
       <h2>Add a New Movie</h2>
+      
 
       <TextField
         className={classes.text}
@@ -131,7 +135,8 @@ const MovieForm = () => {
           Cancel
         </button>
       </Box>
-	  
+      </div>
+      <div className="section"></div>
     </form>
   );
 };
